@@ -20,6 +20,7 @@ export default styles = StyleSheet.create({
     textAlign : 'center',
     color : 'white'
   },
+
   header: {
     fontSize: 30,
     fontWeight: '700',
@@ -44,14 +45,13 @@ export default styles = StyleSheet.create({
     height: 250,
     resizeMode: 'contain'
   },
-  loginView: {
+  signupView: {
     width: '90%',
     marginHorizontal: 16,
     marginTop: 30,
     borderRadius: 10,
-    alignContent : 'center'
+    alignContent : 'center',
   },
-
   input: {
     marginTop: 16,
     borderWidth: 1,
@@ -76,14 +76,14 @@ export default styles = StyleSheet.create({
     borderRadius: 5,
     alignSelf: 'center',
   },
-  signUpContainer: {
+  loginContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
      marginTop: 20,
      marginBottom: 30
   },
-  signUpText: {
+  loginText: {
     fontSize: 16,
     color: '#4a90e2',
     textDecorationLine : 'underline',

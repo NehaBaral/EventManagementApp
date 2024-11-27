@@ -75,8 +75,9 @@ export default function Login() {
                     <Text style={styles.loadingText}>Please wait. Login.....</Text>
                 </View>
             )}
+            <View style = {styles.topContainer}>
             <Text style = {styles.title}>Event Management App</Text>
-        
+            </View>
             <View style={styles.loginView}>
                 <Text style={styles.header}>Login</Text>
                 <TextInput
