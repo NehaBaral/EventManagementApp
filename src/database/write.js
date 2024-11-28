@@ -13,3 +13,14 @@ export async function addEvent(data) {
     return null;
   }
 }
+
+export async function updateEventFavourite(id, data) {
+  try {
+      const docRef = doc(db, 'Events', id);
+      await updateDoc(docRef, data)
+      return true;
+  } catch (e) {
+    console.log('error', e)
+      return false;
+  }
+}

@@ -2,9 +2,9 @@
 import { collection, getDocs, getDoc, query, where, doc } from 'firebase/firestore';
 import { db, auth } from './config';
 
-export async function fetchEvents(userId) {
+export async function fetchEvents(email) {
     const dbCollection = collection(db, 'Events')
-    const dbQuery = query(dbCollection, where('userId', "==", userId))
+    const dbQuery = query(dbCollection, where('email', "==", email))
     const querySnapshot = await getDocs(dbQuery);
 
     return processQuerySnapshot(querySnapshot)
