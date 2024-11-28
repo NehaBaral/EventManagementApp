@@ -53,11 +53,26 @@ export default function Home() {
         });
     }, []);
 
-    const handleFavorite = async(id) => {
-        // try{
-        //     setfavourite(!isFavourite)
-        //     const updated = await database.updateEventFavourite(id,updatedEvent)
-        // }
+    const handleFavorite = async (id) => {
+        try {
+            const eventToUpdate = events.find(event => event.id === id);
+            if (!eventToUpdate) return;
+
+            const newFavoriteStatus = !eventToUpdate.favourite;
+            const updatedEvents = events.map(event =>
+                event.id === id ? { ...event, favourite: newFavoriteStatus } : event
+            );
+            setEvents(updatedEvents);
+            const success = await database.updateEventFavourite(id, { favourite: newFavoriteStatus });
+
+            if (!success) {
+                setEvents(events);
+                throw new Error("Failed to update in database");
+            }
+        } catch (error) {
+            console.error("Error updating favorite:", error);
+            Alert.alert("Error", "Failed to update favorite status");
+        }
     }
 
     const renderItem = ({ item }) => (
