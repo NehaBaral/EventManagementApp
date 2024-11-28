@@ -27,6 +27,11 @@ export default styles = StyleSheet.create({
         borderRadius: 10,
 
     },
+    itemView: {
+        flex: 1,
+        flexDirection: 'column',
+    },
+
     transactionView: {
         flex: 1,
         flexDirection: 'row',
@@ -65,5 +70,29 @@ export default styles = StyleSheet.create({
         top: 10,
         right: 10
     },
+
+    buttonView: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: 10
+      },
+
+    button: {
+        flex: 1,
+        backgroundColor: 'green',
+        paddingVertical: 5,
+        borderRadius: 10,
+        alignSelf: 'center',
+        marginTop : '20',
+        marginHorizontal: 5,
+      },
+    
+      buttonText: {
+        fontSize: 18,
+        fontWeight: '600',
+        color: '#fff',
+        color: '#fdfefe',
+        alignSelf: 'center',
+      },
 })
 
