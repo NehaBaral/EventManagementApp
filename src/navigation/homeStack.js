@@ -56,7 +56,7 @@ export default function HomeStack() {
           <Tab.Screen
             name="Favourite"
             component={Favourite}
-            options={{ headerShown: false }}
+            options={{ headerShown: true }}
           />
       </Tab.Navigator>
     </NavigationContainer>

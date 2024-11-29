@@ -1,2 +1,2 @@
 export { addEvent, updateEventFavourite, deleteEvent, editEvent } from "./write";
-export { fetchEvents, fetchEventById } from "./read";
+export { fetchEvents, fetchEventById, fetchFavouriteEvents } from "./read";

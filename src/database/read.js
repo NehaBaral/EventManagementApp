@@ -36,3 +36,11 @@ export async function fetchEventById(id) {
     }
 
 }
+
+export async function fetchFavouriteEvents() {
+    const dbCollection = collection(db, 'Events')
+    const dbQuery = query(dbCollection, where('favourite', "==", true))
+    const querySnapshot = await getDocs(dbQuery);
+
+    return processQuerySnapshot(querySnapshot)
+}

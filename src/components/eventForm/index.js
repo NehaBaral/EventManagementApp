@@ -39,17 +39,6 @@ export default function EventForm({ navigation, route }) {
         fetchEventById()
     }, [id])
 
-    // const formatDateTimeData = useCallback((date) => {
-    //     const jsDate = date.toDate();
-    //     return jsDate.toLocaleString('en-US', {
-    //         year: 'numeric',
-    //         month: 'short',
-    //         day: 'numeric',
-    //         hour: '2-digit',
-    //         minute: '2-digit'
-    //     });
-    // }, []);
-
     const showDateTimePicker = useCallback(() => {
         setShowPicker(true);
         setPickerMode('date');
