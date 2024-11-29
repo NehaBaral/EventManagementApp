@@ -21,3 +21,18 @@ function processQuerySnapshot(querySnapshot) {
     });
     return data;
 }
+
+export async function fetchEventById(id) {
+    const docRef = doc(db, "Events", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        return {
+            id: docSnap.id,  
+            ...docSnap.data()
+        };
+    } else {
+        console.log("No such document!");
+    }
+
+}

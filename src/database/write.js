@@ -25,14 +25,17 @@ export async function updateEventFavourite(id, data) {
   }
 }
 
-// Function to edit an event
 export async function editEvent(id, data) {
   try {
+    console.log('Editing event with id:', id);
+    console.log('Event data:', data);
     const docRef = doc(db, 'Events', id);
     await updateDoc(docRef, data);
+    console.log('Event updated successfully');
     return true;
   } catch (error) {
     console.error('Error updating event:', error);
+    console.error('Error stack:', error.stack);
     return false;
   }
 }

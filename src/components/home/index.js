@@ -1,7 +1,7 @@
 import { View, TouchableOpacity, Alert, FlatList, Text, ActivityIndicator } from "react-native";
 import styles from "./style";
 import { MaterialIcons } from '@expo/vector-icons';
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useAuthentication } from "../../hooks/useAuthentication";
 import * as database from '../../database';
@@ -19,11 +19,13 @@ export default function Home() {
         navigator.navigate('AddEvent');
     }
 
-    useEffect(() => {
-        fetchData()
-    }, [user])
+    useFocusEffect(
+        useCallback(() => {
+            fetchData();
+        }, [user])
+    );
 
-    async function fetchData() {
+    const fetchData = useCallback(async () => {
         if (user && user.email) {
 
             try {
@@ -39,7 +41,7 @@ export default function Home() {
         } else {
             console.log("User or user email is undefined");
         }
-    }
+    })
 
     const formatDateTime = useCallback((date) => {
         const jsDate = date.toDate();
@@ -97,13 +99,13 @@ export default function Home() {
                 <View style={style.buttonView}>
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={editEvent}
+                        onPress={() => editEvent(item.id)}
                     >
                         <Text style={styles.buttonText}>Edit</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        style={[styles.button, {backgroundColor : 'red'}]}
+                        style={[styles.button, { backgroundColor: 'red' }]}
                         onPress={deleteEvent(item.id)}
                     >
                         <Text style={styles.buttonText}>Delete</Text>
@@ -113,8 +115,8 @@ export default function Home() {
         </TouchableOpacity>
     )
 
-    const editEvent = () => {
-
+    const editEvent = (id) => {
+        navigator.navigate("AddEvent", { id })
     }
 
     const deleteEvent = (id) => async () => {
@@ -130,14 +132,14 @@ export default function Home() {
         } catch (error) {
             console.error("Error deleting event:", error);
             Alert.alert("Error", "Failed to delete event");
-        }finally{
+        } finally {
             setLoading(false);
         }
     };
 
     return (
         <View style={styles.container}>
-             {loading && (
+            {loading && (
                 <View style={styles.loadingOverlay}>
                     <ActivityIndicator size="large" color="#2856ad" />
                     <Text style={styles.loadingText}>Please wait. Login.....</Text>
