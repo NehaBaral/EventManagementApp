@@ -142,15 +142,21 @@ export default function Home() {
             {loading && (
                 <View style={styles.loadingOverlay}>
                     <ActivityIndicator size="large" color="#2856ad" />
-                    <Text style={styles.loadingText}>Please wait. Login.....</Text>
+                    <Text style={styles.loadingText}>Loading...</Text>
                 </View>
             )}
-            <FlatList
-                ref={list}
-                keyExtractor={(item) => item.id}
-                data={events}
-                renderItem={renderItem}
-            />
+            {events.length === 0 ? (
+                <View style={styles.noDataContainer}>
+                    <Text style={styles.noDataText}>No events available! Tab on + icon to add...</Text>
+                </View>
+            ) : (
+                <FlatList
+                    ref={list}
+                    keyExtractor={(item) => item.id}
+                    data={events}
+                    renderItem={renderItem}
+                />
+            )}
             <TouchableOpacity style={styles.fab} onPress={handleFABPress}>
                 <MaterialIcons name="add" size={24} color="white" />
             </TouchableOpacity>

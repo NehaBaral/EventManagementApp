@@ -12,9 +12,8 @@ const Stack = createStackNavigator();
 const HomeTab = () => {
   return (
     <Stack.Navigator>
-
       <Stack.Screen
-        name='Home'
+        name='Events'
         component={Home}>
       </Stack.Screen>
 
@@ -40,7 +39,7 @@ export default function HomeStack() {
           headerTitleAlign: 'center',
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-            if (route.name === 'HomeTab') {
+            if (route.name === 'Home') {
               iconName = focused ? 'home' : 'home-outline';
             } else if (route.name === 'Favourite') {
               iconName = focused ? 'heart' : 'heart-outline';
@@ -49,7 +48,7 @@ export default function HomeStack() {
           }
         })}>
           <Tab.Screen
-            name="HomeTab"
+            name="Home"
             component={HomeTab}
             options={{ headerShown: false }}
           />

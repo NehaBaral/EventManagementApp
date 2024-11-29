@@ -62,7 +62,7 @@ export default styles = StyleSheet.create({
         color: 'saddlebrown',
         fontSize: 14,
         marginEnd: 16,
-        fontWeight : '600'
+        fontWeight: '600'
     },
 
     favoriteIconContainer: {
@@ -75,7 +75,7 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginHorizontal: 10
-      },
+    },
 
     button: {
         flex: 1,
@@ -83,16 +83,35 @@ export default styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 10,
         alignSelf: 'center',
-        marginTop : '20',
+        marginTop: '20',
         marginHorizontal: 5,
-      },
-    
-      buttonText: {
+    },
+
+    buttonText: {
         fontSize: 18,
         fontWeight: '600',
         color: '#fff',
         color: '#fdfefe',
         alignSelf: 'center',
-      },
+    },
+
+    noDataContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    noDataText: {
+        fontSize: 16,
+        color: '#666',
+    },
+
+    favouriteView: {
+        flex: 1,
+        flexDirection: 'column',
+        backgroundColor: 'white',
+        padding: 16,
+        margin: 8,
+        borderRadius: 10
+    },
 })
 

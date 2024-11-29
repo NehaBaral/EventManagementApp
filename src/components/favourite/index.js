@@ -1,11 +1,10 @@
 import { View, TouchableOpacity, Alert, FlatList, Text, ActivityIndicator } from "react-native";
-import styles from "./style";
 import { MaterialIcons } from '@expo/vector-icons';
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useState, useRef, useCallback } from "react";
 import { useAuthentication } from "../../hooks/useAuthentication";
 import * as database from '../../database';
-import style from "./style";
+import styles from "../home/style.js";
 
 export default function Favorite() {
     const { user } = useAuthentication();
@@ -70,16 +69,16 @@ export default function Favorite() {
 
     //UI for each favourite event
     const renderItem = ({ item }) => (
-        <View style={style.itemView}>
-            <View style={style.transactionView}>
-                <View style={style.eventView1}>
-                    <Text style={style.eventName}>{item.name}</Text>
-                    <Text style={style.eventLocation}>Address : {item.location} </Text>
-                    <Text style={style.eventDate}>{formatDateTime(item.dateTime)}</Text>
+        <View style={styles.favouriteView}>
+            <View style={styles.transactionView}>
+                <View style={styles.eventView1}>
+                    <Text style={styles.eventName}>{item.name}</Text>
+                    <Text style={styles.eventLocation}>Address : {item.location} </Text>
+                    <Text style={styles.eventDate}>{formatDateTime(item.dateTime)}</Text>
                 </View>
                 <TouchableOpacity
                     onPress={() => handleFavorite(item.id)}
-                    style={style.favoriteIconContainer}
+                    style={styles.favoriteIconContainer}
                 >
                     <MaterialIcons
                         name={item.favourite ? "favorite" : "favorite-border"}
@@ -96,7 +95,7 @@ export default function Favorite() {
             {loading && (
                 <View style={styles.loadingOverlay}>
                     <ActivityIndicator size="large" color="#2856ad" />
-                    <Text style={styles.loadingText}>Please wait. Login.....</Text>
+                    <Text style={styles.loadingText}>Loading...</Text>
                 </View>
             )}
             {events.length === 0 ? (
