@@ -2,11 +2,10 @@ import { View, TouchableOpacity, Alert, FlatList, Text, ActivityIndicator } from
 import styles from "./style";
 import { MaterialIcons } from '@expo/vector-icons';
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useAuthentication } from "../../hooks/useAuthentication";
 import * as database from '../../database';
 import style from "./style";
-import { format } from 'date-fns';
 
 export default function Home() {
     const navigator = useNavigation();
@@ -33,7 +32,6 @@ export default function Home() {
                 const eventList = await database.fetchEvents(user.email)
                 setEvents(eventList)
             } catch (error) {
-                console.log("Error==", error);
                 Alert.alert("Error", "Error loading the events");
             } finally {
                 setLoading(false)
@@ -76,7 +74,6 @@ export default function Home() {
     }
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity style={style.eventItemContainer} onPress={() => { console.log("Item clicked") }}>
             <View style={style.itemView}>
                 <View style={style.transactionView}>
                     <View style={style.eventView1}>
@@ -112,7 +109,6 @@ export default function Home() {
                     </TouchableOpacity>
                 </View>
             </View>
-        </TouchableOpacity>
     )
 
     const editEvent = (id) => {

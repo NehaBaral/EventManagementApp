@@ -18,18 +18,14 @@ export default styles = StyleSheet.create({
     mainView: {
         height: '100%',
     },
-    eventItemContainer: {
+ 
+    itemView: {
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         backgroundColor: 'white',
         padding: 16,
         margin: 8,
         borderRadius: 10,
-
-    },
-    itemView: {
-        flex: 1,
-        flexDirection: 'column',
     },
 
     transactionView: {
